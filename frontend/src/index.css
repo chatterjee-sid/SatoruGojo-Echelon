@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-black: #0a0a0a;
+  --color-cyber-gray: #1a1a1a;
+  --color-cyber-green: #00ff41;
+  --color-cyber-red: #ff003c;
+  --color-cyber-blue: #00f3ff;
+
+  --shadow-neon-green: 0 0 10px rgba(0, 255, 65, 0.3);
+  --shadow-neon-red: 0 0 10px rgba(255, 0, 60, 0.3);
+  --shadow-neon-blue: 0 0 10px rgba(0, 243, 255, 0.3);
+
+  --shadow-text-green: 0 0 5px rgba(0, 255, 65, 0.5);
+  --shadow-text-red: 0 0 5px rgba(255, 0, 60, 0.5);
+  --shadow-text-blue: 0 0 5px rgba(0, 243, 255, 0.5);
+
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-black text-gray-300 font-mono;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-cyber-gray/50 backdrop-blur-md border border-white/10 rounded-lg;
+  }
+
+  .neon-border {
+    @apply border border-cyber-green shadow-neon-green;
+  }
+
+  .neon-text {
+    @apply text-cyber-green shadow-text-green;
+  }
+
+  .alert-neon-text {
+    @apply transition-colors duration-300;
+  }
+
+  /* Theme Root Styles */
+  .theme-root.cyber-red .alert-neon-text {
+    @apply text-cyber-red shadow-text-red;
+  }
+
+  .theme-root.cyber-green .alert-neon-text {
+    @apply text-cyber-green shadow-text-green;
+  }
+
+  .theme-root.cyber-blue .alert-neon-text {
+    @apply text-cyber-blue shadow-text-blue;
+  }
+
+  .theme-root.cyber-red .alert-border {
+    @apply border-cyber-red shadow-neon-red;
+  }
+
+  .theme-root.cyber-green .alert-border {
+    @apply border-cyber-green shadow-neon-green;
+  }
+
+  .theme-root.cyber-blue .alert-border {
+    @apply border-cyber-blue shadow-neon-blue;
+  }
+
+  .theme-root.cyber-red .alert-bg {
+    @apply bg-cyber-red;
+  }
+
+  .theme-root.cyber-green .alert-bg {
+    @apply bg-cyber-green;
+  }
+
+  .theme-root.cyber-blue .alert-bg {
+    @apply bg-cyber-blue;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cyber-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-gray rounded-full border border-white/5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-700;
+}

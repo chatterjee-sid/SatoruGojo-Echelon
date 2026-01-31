@@ -20,11 +20,15 @@ The core detection system analyzes identity records using four correlation rules
 ## Project Structure
 
 ```
-/mnt/okcomputer/output/
+synthetic-identity-detection/
 ├── backend/                 # Node.js/Express API
 │   ├── server.js           # Main server with Detection Engine
 │   ├── package.json        # Backend dependencies
-│   └── dist/               # Frontend build (served statically)
+│   ├── routes/             # API routes
+│   ├── controllers/        # Request handlers
+│   ├── services/           # Business logic
+│   ├── data/               # Sample data
+│   └── demo/               # Demo scripts
 ├── app/                    # React Frontend (Vite + TypeScript + Tailwind)
 │   ├── src/
 │   │   ├── sections/       # Main UI components
@@ -33,10 +37,45 @@ The core detection system analyzes identity records using four correlation rules
 │   │   │   └── DetailView.tsx     # Detailed record analysis
 │   │   ├── services/       # API integration
 │   │   ├── types/          # TypeScript definitions
-│   │   └── lib/            # Utilities and sample data
+│   │   ├── lib/            # Utilities and sample data
+│   │   └── components/     # Reusable UI components
+│   ├── package.json        # Frontend dependencies
 │   └── dist/               # Production build
-└── README.md
+├── LICENSE                 # MIT License
+├── README.md               # This file
+└── .gitignore             # Git ignore rules
 ```
+
+## Getting Started
+
+### Prerequisites
+- Node.js 16+ and npm
+- Git
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/your-username/synthetic-identity-detection.git
+cd synthetic-identity-detection
+```
+
+2. **Install backend dependencies:**
+```bash
+cd backend
+npm install
+```
+
+3. **Install frontend dependencies:**
+```bash
+cd ../app
+npm install
+```
+
+## Project Structure
+
+```
+synthetic-identity-detection/
 
 ## API Endpoints
 
@@ -97,21 +136,49 @@ Health check endpoint.
 
 **Backend:**
 ```bash
-cd /mnt/okcomputer/output/backend
+cd backend
+npm install
 npm start
+# or npm run dev
 ```
 Server runs on http://localhost:3001
 
-**Frontend:**
+**Frontend (in another terminal):**
 ```bash
-cd /mnt/okcomputer/output/app
+cd app
+npm install
 npm run dev
 ```
 Dev server runs on http://localhost:5173
 
-### Production Mode
+### Production Build
+
+**Build frontend:**
 ```bash
-cd /mnt/okcomputer/output/backend
+cd app
+npm run build
+```
+
+**Start backend with static files:**
+```bash
+cd backend
+npm install
+npm start
+```
+The server serves both API and frontend static files on http://localhost:3001
+
+### Production Build
+
+**Build frontend:**
+```bash
+cd app
+npm run build
+```
+
+**Start backend with static files:**
+```bash
+cd backend
+npm install
 npm start
 ```
 The server serves both API and frontend static files on http://localhost:3001
@@ -133,3 +200,27 @@ Click "Load Sample" in the dashboard to populate with test data.
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui
 - **UI Components**: Radix UI primitives, Lucide icons
 - **State Management**: React hooks (useState, useCallback)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, email support@example.com or open an issue on GitHub.
+
+## Acknowledgments
+
+- Built with React, Express.js, and modern web technologies
+- UI components from shadcn/ui and Radix UI
+- Icons from Lucide Icons

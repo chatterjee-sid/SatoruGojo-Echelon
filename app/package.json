@@ -1,7 +1,9 @@
 {
-  "name": "my-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "synthetic-identity-detector-frontend",
+  "private": false,
+  "version": "1.0.0",
+  "description": "React frontend for synthetic identity detection using multi-source data correlation",
+  "keywords": ["fraud-detection", "identity-verification", "synthetic-identity", "react", "vite"],
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,0 +1,32 @@
+[
+    {
+        "type": "keydown",
+        "fieldId": "fullName",
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "keyup",
+        "fieldId": "fullName",
+        "timestamp": 1706710000100
+    },
+    {
+        "type": "keydown",
+        "fieldId": "fullName",
+        "timestamp": 1706710000200
+    },
+    {
+        "type": "keyup",
+        "fieldId": "fullName",
+        "timestamp": 1706710000300
+    },
+    {
+        "type": "keydown",
+        "fieldId": "fullName",
+        "timestamp": 1706710000400
+    },
+    {
+        "type": "keyup",
+        "fieldId": "fullName",
+        "timestamp": 1706710000500
+    }
+]

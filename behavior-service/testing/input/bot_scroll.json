@@ -1,0 +1,17 @@
+[
+    {
+        "type": "scroll",
+        "depth": 0,
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "scroll",
+        "depth": 50,
+        "timestamp": 1706710000500
+    },
+    {
+        "type": "scroll",
+        "depth": 100,
+        "timestamp": 1706710001000
+    }
+]

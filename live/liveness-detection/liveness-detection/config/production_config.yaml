@@ -1,0 +1,49 @@
+# Production Configuration for Liveness Detection
+
+# Model Settings
+model:
+  path: "models/face_landmarker.task"
+  num_faces: 1
+
+# Blink Detection (stricter for production)
+blink_detection:
+  ear_threshold: 0.18
+  consecutive_frames: 2
+  required_blinks: 3  # More blinks required
+
+# Anti-Spoofing (stricter thresholds)
+anti_spoofing:
+  variance_threshold: 0.00005  # Higher threshold
+  history_length: 45
+  enabled: true
+
+# Session Management
+session:
+  time_limit: 15.0  # More time allowed
+  timeout: 20.0     # Longer timeout
+
+# Camera Settings
+camera:
+  device_index: 0
+  width: 1280
+  height: 720
+  fps: 60
+
+# Display Settings
+display:
+  show_preview: false  # No preview in production
+  show_landmarks: false
+  show_fps: false
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/liveness_detection.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+
+# Security
+security:
+  max_attempts: 3
+  lockout_duration: 300  # 5 minutes
+  save_failed_attempts: true

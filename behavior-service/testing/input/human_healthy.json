@@ -1,0 +1,77 @@
+[
+    {
+        "type": "mousemove",
+        "x": 100,
+        "y": 100,
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "mousemove",
+        "x": 120,
+        "y": 140,
+        "timestamp": 1706710000100
+    },
+    {
+        "type": "mousemove",
+        "x": 180,
+        "y": 250,
+        "timestamp": 1706710000200
+    },
+    {
+        "type": "mousemove",
+        "x": 300,
+        "y": 420,
+        "timestamp": 1706710000300
+    },
+    {
+        "type": "mousemove",
+        "x": 450,
+        "y": 550,
+        "timestamp": 1706710000400
+    },
+    {
+        "type": "scroll",
+        "depth": 10,
+        "timestamp": 1706710000600
+    },
+    {
+        "type": "scroll",
+        "depth": 15,
+        "timestamp": 1706710001500
+    },
+    {
+        "type": "scroll",
+        "depth": 25,
+        "timestamp": 1706710002800
+    },
+    {
+        "type": "focus",
+        "fieldId": "fullName",
+        "timestamp": 1706710004000
+    },
+    {
+        "type": "keydown",
+        "fieldId": "fullName",
+        "timestamp": 1706710005500
+    },
+    {
+        "type": "keyup",
+        "fieldId": "fullName",
+        "timestamp": 1706710005650
+    },
+    {
+        "type": "focus",
+        "fieldId": "email",
+        "timestamp": 1706710007000
+    },
+    {
+        "type": "keydown",
+        "fieldId": "email",
+        "timestamp": 1706710008200
+    },
+    {
+        "type": "keyup",
+        "fieldId": "email",
+        "timestamp": 1706710008350
+    }
+]

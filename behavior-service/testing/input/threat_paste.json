@@ -1,0 +1,12 @@
+[
+    {
+        "type": "focus",
+        "fieldId": "ssn",
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "paste",
+        "fieldId": "ssn",
+        "timestamp": 1706710000500
+    }
+]

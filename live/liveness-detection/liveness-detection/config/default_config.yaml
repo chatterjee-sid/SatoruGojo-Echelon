@@ -1,0 +1,36 @@
+# Default Configuration for Liveness Detection
+
+# Model Settings
+model:
+  path: "models/face_landmarker.task"
+  num_faces: 1
+
+# Blink Detection
+blink_detection:
+  ear_threshold: 0.2
+  consecutive_frames: 1
+  required_blinks: 2
+
+# Anti-Spoofing
+anti_spoofing:
+  variance_threshold: 0.00001
+  history_length: 30
+  enabled: true
+
+# Session Management
+session:
+  time_limit: 10.0  # seconds
+  timeout: 15.0     # seconds
+
+# Camera Settings
+camera:
+  device_index: 0
+  width: 640
+  height: 480
+  fps: 30
+
+# Display Settings
+display:
+  show_preview: true
+  show_landmarks: false
+  show_fps: true

@@ -1,0 +1,22 @@
+[
+    {
+        "type": "focus",
+        "fieldId": "fullName",
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "keydown",
+        "fieldId": "fullName",
+        "timestamp": 1706710000010
+    },
+    {
+        "type": "focus",
+        "fieldId": "email",
+        "timestamp": 1706710001000
+    },
+    {
+        "type": "keydown",
+        "fieldId": "email",
+        "timestamp": 1706710001005
+    }
+]

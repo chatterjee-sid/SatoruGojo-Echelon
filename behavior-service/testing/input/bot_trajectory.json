@@ -1,0 +1,38 @@
+[
+    {
+        "type": "mousemove",
+        "x": 0,
+        "y": 0,
+        "timestamp": 1706710000000
+    },
+    {
+        "type": "mousemove",
+        "x": 100,
+        "y": 100,
+        "timestamp": 1706710000050
+    },
+    {
+        "type": "mousemove",
+        "x": 200,
+        "y": 200,
+        "timestamp": 1706710000100
+    },
+    {
+        "type": "mousemove",
+        "x": 300,
+        "y": 300,
+        "timestamp": 1706710000150
+    },
+    {
+        "type": "mousemove",
+        "x": 400,
+        "y": 400,
+        "timestamp": 1706710000200
+    },
+    {
+        "type": "mousemove",
+        "x": 500,
+        "y": 500,
+        "timestamp": 1706710000250
+    }
+]

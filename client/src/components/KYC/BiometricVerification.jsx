@@ -272,23 +272,46 @@ const BiometricVerification = ({ onComplete }) => {
             )}
 
             {/* Actions */}
-            <div className="flex justify-center gap-4">
-                {!isStarted && (
-                    <Button onClick={handleStart} size="lg" icon={Camera}>
-                        Start Verification
-                    </Button>
-                )}
+            <div className="flex flex-col items-center gap-4">
+                <div className="flex justify-center gap-4">
+                    {!isStarted && (
+                        <Button onClick={handleStart} size="lg" icon={Camera}>
+                            Start Verification
+                        </Button>
+                    )}
 
-                {(isVerified || (timeRemaining === 0 && isStarted)) && (
-                    <Button onClick={handleRetry} variant="outline" icon={RefreshCw}>
-                        Try Again
-                    </Button>
-                )}
+                    {(isVerified || (timeRemaining === 0 && isStarted)) && (
+                        <Button onClick={handleRetry} variant="outline" icon={RefreshCw}>
+                            Try Again
+                        </Button>
+                    )}
 
-                {isVerified && (
-                    <Button onClick={handleContinue} size="lg">
-                        Continue to Review
-                    </Button>
+                    {isVerified && (
+                        <Button onClick={handleContinue} size="lg">
+                            Continue to Review
+                        </Button>
+                    )}
+                </div>
+
+                {/* Skip for Demo - Only show when verification is not complete */}
+                {!isVerified && (
+                    <button
+                        onClick={() => {
+                            onComplete({
+                                faceImage: 'demo-skip',
+                                livenessResult: {
+                                    passed: true,
+                                    blinkCount: 3,
+                                    requiredBlinks: 3,
+                                    timestamp: Date.now(),
+                                    skippedForDemo: true,
+                                },
+                            });
+                        }}
+                        className="text-sm text-gray-400 hover:text-gray-600 underline"
+                    >
+                        Skip for Demo (Testing Only)
+                    </button>
                 )}
             </div>
         </div>

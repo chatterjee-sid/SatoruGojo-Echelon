@@ -242,6 +242,34 @@ app.get('/api/kyc/:id', authMiddleware, (req, res) => {
     res.json(app);
 });
 
+// Delete application
+app.delete('/api/kyc/:id', authMiddleware, (req, res) => {
+    const { id } = req.params;
+    const index = db.applications.findIndex(a => a.id === id);
+    if (index === -1) {
+        return res.status(404).json({ error: 'Application not found' });
+    }
+    db.applications.splice(index, 1);
+    res.json({ success: true, message: 'Application deleted successfully' });
+});
+
+// ============ DOCUMENT ANALYSIS (Mock ML) ============
+
+app.post('/api/analyze/document', authMiddleware, upload.single('document'), (req, res) => {
+    // Simulate ML document analysis
+    const forgeryScore = Math.floor(Math.random() * 30) + 10; // 10-40 (mostly passing)
+    const confidence = Math.floor(Math.random() * 10) + 90; // 90-100
+
+    res.json({
+        forgeryScore,
+        confidence,
+        isAuthentic: forgeryScore <= 50,
+        documentType: req.file?.mimetype?.includes('pdf') ? 'PDF' : 'Image',
+        flags: forgeryScore > 30 ? ['Minor inconsistencies detected'] : [],
+        analysisTime: `${(Math.random() * 2 + 1).toFixed(2)}s`,
+    });
+});
+
 // ============ DASHBOARD ROUTES ============
 
 app.get('/api/dashboard/stats', authMiddleware, (req, res) => {

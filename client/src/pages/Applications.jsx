@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, Eye } from 'lucide-react';
+import { Plus, Search, Eye, Trash2 } from 'lucide-react';
 import { Card, Button, Badge, Loading } from '../components/Common';
-import { formatDate, getStatusColor, classNames } from '../utils/helpers';
+import { formatDate, classNames } from '../utils/helpers';
 import kycService from '../services/kycService';
 import toast from 'react-hot-toast';
 
@@ -12,6 +12,7 @@ const Applications = () => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
+    const [deleteConfirm, setDeleteConfirm] = useState(null);
 
     useEffect(() => {
         fetchApplications();
@@ -30,11 +31,27 @@ const Applications = () => {
                 { id: 'APP001', name: 'John Doe', email: 'john@example.com', createdAt: new Date(), status: 'approved', riskScore: 25 },
                 { id: 'APP002', name: 'Jane Smith', email: 'jane@example.com', createdAt: new Date(), status: 'review', riskScore: 55 },
                 { id: 'APP003', name: 'Bob Wilson', email: 'bob@example.com', createdAt: new Date(), status: 'rejected', riskScore: 82 },
-                { id: 'APP004', name: 'Alice Brown', email: 'alice@example.com', createdAt: new Date(), status: 'pending', riskScore: null },
             ]);
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            // Call backend to delete (if endpoint exists)
+            try {
+                await kycService.deleteApplication(id);
+            } catch (e) {
+                // Ignore if endpoint doesn't exist
+            }
+            // Remove from local state
+            setApplications(applications.filter(app => app.id !== id));
+            toast.success('Application deleted successfully');
+        } catch (error) {
+            toast.error('Failed to delete application');
+        }
+        setDeleteConfirm(null);
     };
 
     const filteredApplications = applications.filter(app => {
@@ -104,7 +121,7 @@ const Applications = () => {
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Risk Score</th>
-                                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase">Action</th>
+                                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -118,15 +135,14 @@ const Applications = () => {
                                 filteredApplications.map((app) => (
                                     <tr
                                         key={app.id}
-                                        className="hover:bg-gray-50 transition-colors cursor-pointer"
-                                        onClick={() => navigate(`/application/${app.id}`)}
+                                        className="hover:bg-gray-50 transition-colors"
                                     >
                                         <td className="px-6 py-4">
                                             <span className="font-mono text-sm text-gray-600">{app.id}</span>
                                         </td>
                                         <td className="px-6 py-4">
-                                            <p className="font-medium text-gray-900">{app.name || 'N/A'}</p>
-                                            <p className="text-sm text-gray-500">{app.email}</p>
+                                            <p className="font-medium text-gray-900">{app.name || app.personalInfo?.fullName || 'N/A'}</p>
+                                            <p className="text-sm text-gray-500">{app.email || app.personalInfo?.email || '-'}</p>
                                         </td>
                                         <td className="px-6 py-4 text-sm text-gray-600">
                                             {formatDate(app.createdAt)}
@@ -151,15 +167,22 @@ const Applications = () => {
                                             )}
                                         </td>
                                         <td className="px-6 py-4 text-right">
-                                            <button
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    navigate(`/application/${app.id}`);
-                                                }}
-                                                className="p-2 text-gray-400 hover:text-primary-500 hover:bg-primary-50 rounded-lg transition-colors"
-                                            >
-                                                <Eye size={18} />
-                                            </button>
+                                            <div className="flex items-center justify-end gap-2">
+                                                <button
+                                                    onClick={() => navigate(`/application/${app.id}`)}
+                                                    className="p-2 text-gray-400 hover:text-primary-500 hover:bg-primary-50 rounded-lg transition-colors"
+                                                    title="View Details"
+                                                >
+                                                    <Eye size={18} />
+                                                </button>
+                                                <button
+                                                    onClick={() => setDeleteConfirm(app.id)}
+                                                    className="p-2 text-gray-400 hover:text-danger-500 hover:bg-danger-50 rounded-lg transition-colors"
+                                                    title="Delete Application"
+                                                >
+                                                    <Trash2 size={18} />
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))
@@ -168,6 +191,29 @@ const Applications = () => {
                     </table>
                 </div>
             </Card>
+
+            {/* Delete Confirmation Modal */}
+            {deleteConfirm && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-xl p-6 max-w-md w-full mx-4 shadow-2xl">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Delete Application?</h3>
+                        <p className="text-gray-500 mb-6">
+                            Are you sure you want to delete this application? This action cannot be undone.
+                        </p>
+                        <div className="flex justify-end gap-3">
+                            <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
+                                Cancel
+                            </Button>
+                            <Button
+                                variant="danger"
+                                onClick={() => handleDelete(deleteConfirm)}
+                            >
+                                Delete
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

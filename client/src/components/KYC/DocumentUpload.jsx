@@ -147,10 +147,11 @@ const DocumentUpload = ({ onComplete, applicationId }) => {
                         Drag and drop your document here, or click to browse
                     </p>
 
-                    <label htmlFor="document-upload">
-                        <Button as="span" variant="outline" className="cursor-pointer">
-                            Select File
-                        </Button>
+                    <label
+                        htmlFor="document-upload"
+                        className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 cursor-pointer transition-colors"
+                    >
+                        Select File
                     </label>
 
                     <p className="text-sm text-gray-400 mt-4">

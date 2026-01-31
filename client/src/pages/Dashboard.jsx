@@ -50,6 +50,10 @@ const Dashboard = () => {
         Math.max(stats.total || 1, 1)
     ) : 35;
 
+    const handleDeleteApplication = (id) => {
+        setRecentApplications(recentApplications.filter(app => app.id !== id));
+    };
+
     return (
         <div className="space-y-6">
             {/* Stats Cards */}
@@ -73,7 +77,7 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Applications */}
-            <RecentApplications applications={recentApplications} />
+            <RecentApplications applications={recentApplications} onDelete={handleDeleteApplication} />
         </div>
     );
 };

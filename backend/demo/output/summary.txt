@@ -1,0 +1,12 @@
+
+Detection Demo Summary
+======================
+Date: 2026-01-31T15:33:09.675Z
+Total Records: 8
+Synthetic Detected: 3
+
+Top Flags:
+- Email Risk: 1
+- Document Validation: 1
+- Phone Velocity: 3
+- Network Density: 2

@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
-import { 
-  Upload, 
-  FileJson, 
-  AlertTriangle, 
-  CheckCircle, 
-  Shield, 
+import {
+  Upload,
+  FileJson,
+  AlertTriangle,
+  CheckCircle,
+  Shield,
   Activity,
   Users,
   Clock,
@@ -22,7 +22,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { sampleRecords, generateJsonTemplate } from '@/lib/sampleData';
-import { analyzeRecords } from '@/services/api';
+import { analyzeRecords, analyzeSingleRecord } from '@/services/api';
 import type { IdentityRecord, AnalysisResponse } from '@/types';
 import { ResultsTable } from './ResultsTable';
 import { DetailView } from './DetailView';
@@ -75,19 +75,24 @@ export function Dashboard() {
     setError(null);
 
     try {
-      let parsed: { records: IdentityRecord[] };
-      
+      let parsed: any;
+
       try {
         parsed = JSON.parse(jsonInput);
       } catch {
         throw new Error('Invalid JSON format');
       }
 
-      if (!parsed.records || !Array.isArray(parsed.records)) {
-        throw new Error('JSON must contain a "records" array');
+      let result: AnalysisResponse;
+
+      if (parsed.records && Array.isArray(parsed.records)) {
+        result = await analyzeRecords(parsed.records);
+      } else if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+        result = await analyzeSingleRecord(parsed as IdentityRecord);
+      } else {
+        throw new Error('JSON must contain a "records" array or be a single record object');
       }
 
-      const result = await analyzeRecords(parsed.records);
       setAnalysisResult(result);
       setActiveTab('results');
     } catch (err) {
@@ -107,8 +112,8 @@ export function Dashboard() {
 
   if (selectedRecord) {
     return (
-      <DetailView 
-        record={selectedRecord} 
+      <DetailView
+        record={selectedRecord}
         onBack={handleBackToResults}
       />
     );
@@ -362,8 +367,8 @@ export function Dashboard() {
                       <div className={cn(
                         "text-3xl font-bold",
                         analysisResult.summary.averageRiskScore >= 70 ? "text-red-600" :
-                        analysisResult.summary.averageRiskScore >= 40 ? "text-orange-600" :
-                        "text-green-600"
+                          analysisResult.summary.averageRiskScore >= 40 ? "text-orange-600" :
+                            "text-green-600"
                       )}>
                         {analysisResult.summary.averageRiskScore}
                       </div>
@@ -382,8 +387,8 @@ export function Dashboard() {
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
                         {Object.entries(analysisResult.summary.rulesTriggered).map(([rule, count]) => (
-                          <Badge 
-                            key={rule} 
+                          <Badge
+                            key={rule}
                             variant={count > 0 ? "destructive" : "secondary"}
                             className="text-xs"
                           >
@@ -396,7 +401,7 @@ export function Dashboard() {
                 )}
 
                 {/* Results Table */}
-                <ResultsTable 
+                <ResultsTable
                   results={analysisResult.results}
                   onRowClick={handleRowClick}
                 />

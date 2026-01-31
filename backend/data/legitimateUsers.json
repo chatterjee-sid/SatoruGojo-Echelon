@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Gerald Fritsch-Crist",
+        "dob": "04-11-1990",
+        "email": "Axel61@hotmail.com",
+        "phone": "9378680474",
+        "faceAge": 33,
+        "deviceId": "cbdc9162-aef2-443b-9db0-61131c865758",
+        "ip": "0.225.222.223",
+        "formTime": 9020,
+        "userId": "LEGIT_1",
+        "isSynthetic": false
+    },
+    {
+        "name": "Jane Doe",
+        "dob": "01-15-1985",
+        "email": "jane.doe@example.com",
+        "phone": "5551234567",
+        "faceAge": 38,
+        "deviceId": "aaa-bbb-ccc",
+        "ip": "192.168.1.1",
+        "formTime": 12000,
+        "userId": "LEGIT_2",
+        "isSynthetic": false
+    },
+    {
+        "name": "John Smith",
+        "dob": "05-20-1995",
+        "email": "john.smith@gmail.com",
+        "phone": "5559876543",
+        "faceAge": 28,
+        "deviceId": "ddd-eee-fff",
+        "ip": "10.0.0.1",
+        "formTime": 8500,
+        "userId": "LEGIT_3",
+        "isSynthetic": false
+    }
+]

@@ -1,13 +1,53 @@
 const DetectionEngine = require('../services/detectionEngine');
 
+const legitimateUsers = require('../data/legitimateUsers.json');
+
 const analyzeRecords = (req, res) => {
     try {
-        const { records } = req.body;
+        const { records, record } = req.body;
 
-        // Validation
+        // Handle single record analysis
+        if (record) {
+            // Validate required fields
+            const requiredFields = ['name', 'dob', 'email', 'phone', 'faceAge', 'deviceId', 'ip', 'formTime', 'userId'];
+            const missingFields = requiredFields.filter(field => !(field in record));
+
+            if (missingFields.length > 0) {
+                return res.status(400).json({
+                    error: 'Record is missing required fields',
+                    missingFields
+                });
+            }
+
+            const engine = new DetectionEngine();
+            // Analyze against legitimate users
+            const result = engine.analyzeSingle(record, legitimateUsers);
+            const results = [result];
+
+            const summary = {
+                totalRecords: 1,
+                syntheticCount: result.analysis.isSynthetic ? 1 : 0,
+                cleanCount: result.analysis.isSynthetic ? 0 : 1,
+                averageRiskScore: result.analysis.riskScore,
+                rulesTriggered: {}
+            };
+
+            result.analysis.reasons.forEach(reason => {
+                const ruleName = reason.rule.split(' - ')[0];
+                summary.rulesTriggered[ruleName] = (summary.rulesTriggered[ruleName] || 0) + 1;
+            });
+
+            return res.json({
+                success: true,
+                summary,
+                results
+            });
+        }
+
+        // Validation for array of records
         if (!records || !Array.isArray(records)) {
             return res.status(400).json({
-                error: 'Invalid request format. Expected { records: [...] }'
+                error: 'Invalid request format. Expected { records: [...] } or { record: {...} }'
             });
         }
 

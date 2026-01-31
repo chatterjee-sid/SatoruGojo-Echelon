@@ -1,0 +1,154 @@
+[
+    {
+        "id": "case_1_clean",
+        "description": "Perfectly legitimate user",
+        "name": "Sarah Connor",
+        "dob": "1985-05-12",
+        "email": "sarah.connor@gmail.com",
+        "phone": "5550101001",
+        "faceAge": 38,
+        "deviceId": "dev_unique_001",
+        "ip": "192.168.1.101",
+        "formTime": 45000,
+        "userId": "user_101",
+        "docIssueDate": "2015-06-20",
+        "faceEmbedding": [
+            0.1,
+            0.2,
+            0.3
+        ]
+    },
+    {
+        "id": "case_2_gibberish_disposable",
+        "description": "Gibberish name and disposable email",
+        "name": "Xqkzjwvy Bgmcld",
+        "dob": "1990-01-01",
+        "email": "fraudster@tempmail.com",
+        "phone": "5550102002",
+        "faceAge": 33,
+        "deviceId": "dev_unique_002",
+        "ip": "192.168.1.102",
+        "formTime": 12000,
+        "userId": "user_102",
+        "docIssueDate": "2020-01-01",
+        "faceEmbedding": [
+            0.1,
+            0.2,
+            0.3
+        ]
+    },
+    {
+        "id": "case_3_doc_anomaly",
+        "description": "Document issued before birth",
+        "name": "Marty McFly",
+        "dob": "1995-10-21",
+        "email": "marty@future.com",
+        "phone": "5550103003",
+        "faceAge": 28,
+        "deviceId": "dev_unique_003",
+        "ip": "192.168.1.103",
+        "formTime": 30000,
+        "userId": "user_103",
+        "docIssueDate": "1990-10-21",
+        "faceEmbedding": [
+            0.1,
+            0.2,
+            0.3
+        ]
+    },
+    {
+        "id": "case_4_phone_velocity_1",
+        "description": "Phone velocity check - User A",
+        "name": "John Doe",
+        "dob": "1988-01-01",
+        "email": "johndoe1@gmail.com",
+        "phone": "9998887777",
+        "faceAge": 35,
+        "deviceId": "dev_vel_001",
+        "ip": "10.0.0.1",
+        "formTime": 25000,
+        "userId": "user_vel_1",
+        "docIssueDate": "2018-01-01",
+        "faceEmbedding": [
+            0.1,
+            0.1,
+            0.1
+        ]
+    },
+    {
+        "id": "case_5_phone_velocity_2",
+        "description": "Phone velocity check - User B (Same Phone)",
+        "name": "Jane Smith",
+        "dob": "1992-05-05",
+        "email": "jane.smith@yahoo.com",
+        "phone": "9998887777",
+        "faceAge": 31,
+        "deviceId": "dev_vel_002",
+        "ip": "10.0.0.2",
+        "formTime": 22000,
+        "userId": "user_vel_2",
+        "docIssueDate": "2019-05-05",
+        "faceEmbedding": [
+            0.2,
+            0.2,
+            0.2
+        ]
+    },
+    {
+        "id": "case_6_phone_velocity_3",
+        "description": "Phone velocity check - User C (Same Phone - Should Trigger)",
+        "name": "Bob Builder",
+        "dob": "1980-08-08",
+        "email": "bob@buildit.com",
+        "phone": "9998887777",
+        "faceAge": 43,
+        "deviceId": "dev_vel_003",
+        "ip": "10.0.0.3",
+        "formTime": 28000,
+        "userId": "user_vel_3",
+        "docIssueDate": "2010-08-08",
+        "faceEmbedding": [
+            0.3,
+            0.3,
+            0.3
+        ]
+    },
+    {
+        "id": "case_7_network_density_1",
+        "description": "Network density - User X",
+        "name": "Alice Cyber",
+        "dob": "2000-01-01",
+        "email": "alice@cyber.net",
+        "phone": "5551112222",
+        "faceAge": 23,
+        "deviceId": "shared_device_001",
+        "ip": "203.0.113.1",
+        "formTime": 15000,
+        "userId": "user_net_1",
+        "docIssueDate": "2022-01-01",
+        "faceEmbedding": [
+            0.5,
+            0.5,
+            0.5
+        ]
+    },
+    {
+        "id": "case_8_network_density_2",
+        "description": "Network density - User Y",
+        "name": "Eve Hacker",
+        "dob": "1999-12-31",
+        "email": "eve@hacker.io",
+        "phone": "5553334444",
+        "faceAge": 24,
+        "deviceId": "shared_device_001",
+        "ip": "203.0.113.1",
+        "formTime": 14000,
+        "userId": "user_net_2",
+        "docIssueDate": "2021-12-31",
+        "faceEmbedding": [
+            0.6,
+            0.6,
+            0.6
+        ]
+    }
+]

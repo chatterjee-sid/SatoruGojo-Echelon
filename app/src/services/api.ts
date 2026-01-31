@@ -21,6 +21,25 @@ export const analyzeRecords = async (
   return response.json();
 };
 
+export const analyzeSingleRecord = async (
+  record: IdentityRecord
+): Promise<AnalysisResponse> => {
+  const response = await fetch(`${API_BASE_URL}/api/analyze`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ record }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Failed to analyze record');
+  }
+
+  return response.json();
+};
+
 export const checkHealth = async (): Promise<{ status: string }> => {
   const response = await fetch(`${API_BASE_URL}/api/health`);
   if (!response.ok) {

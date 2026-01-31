@@ -1,0 +1,54 @@
+{
+    "events": [
+        {
+            "type": "keydown",
+            "fieldId": "fullName",
+            "timestamp": 1000
+        },
+        {
+            "type": "keyup",
+            "fieldId": "fullName",
+            "timestamp": 1120
+        },
+        {
+            "type": "keydown",
+            "fieldId": "fullName",
+            "timestamp": 1350
+        },
+        {
+            "type": "keyup",
+            "fieldId": "fullName",
+            "timestamp": 1490
+        },
+        {
+            "type": "keydown",
+            "fieldId": "email",
+            "timestamp": 2000
+        },
+        {
+            "type": "keyup",
+            "fieldId": "email",
+            "timestamp": 2150
+        },
+        {
+            "type": "keydown",
+            "fieldId": "phone",
+            "timestamp": 3000
+        },
+        {
+            "type": "keyup",
+            "fieldId": "phone",
+            "timestamp": 3100
+        },
+        {
+            "type": "keydown",
+            "fieldId": "ssn",
+            "timestamp": 4000
+        },
+        {
+            "type": "keyup",
+            "fieldId": "ssn",
+            "timestamp": 4150
+        }
+    ]
+}

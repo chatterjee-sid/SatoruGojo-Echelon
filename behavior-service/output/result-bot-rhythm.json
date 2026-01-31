@@ -1,0 +1,24 @@
+{
+    "behaviorScore": "0.60",
+    "flags": [
+        "Bot_Rhythm"
+    ],
+    "details": {
+        "rhythms": {
+            "dwellStd": 0,
+            "flightStd": 0,
+            "isBot": true,
+            "isInconsistent": false
+        },
+        "navigation": {
+            "fieldSequence": [
+                "fullName"
+            ],
+            "isSuspicious": false
+        },
+        "pastes": {
+            "pasteCount": 0,
+            "hasPIIPaste": false
+        }
+    }
+}

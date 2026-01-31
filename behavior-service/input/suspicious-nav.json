@@ -1,0 +1,24 @@
+{
+    "events": [
+        {
+            "type": "keydown",
+            "fieldId": "fullName",
+            "timestamp": 1000
+        },
+        {
+            "type": "keyup",
+            "fieldId": "fullName",
+            "timestamp": 1100
+        },
+        {
+            "type": "keydown",
+            "fieldId": "ssn",
+            "timestamp": 1500
+        },
+        {
+            "type": "keyup",
+            "fieldId": "ssn",
+            "timestamp": 1600
+        }
+    ]
+}
